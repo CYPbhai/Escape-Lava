@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelGenerator : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] tiles;
     [SerializeField] private Vector3 startPosition;
@@ -19,10 +19,25 @@ public class LevelGenerator : MonoBehaviour
         {
             PoolManager.Instance.Prewarm(tile, 45);
         }
-        StartCoroutine(GenerateLevel());
+        GenerateLevel();
     }
 
-    public IEnumerator GenerateLevel()
+    public void GenerateLevel()
+    {
+        StartCoroutine(PopulateLevel());
+    }
+
+    public void DegenerateLevel()
+    {
+        StartCoroutine(DepopulateLevel());
+    }
+
+    public void NextLvel()
+    {
+        StartCoroutine(GenerateNextLevel());
+    }
+
+    private IEnumerator PopulateLevel()
     {
         for(int i=0; i<width; ++i)
         {
@@ -37,16 +52,24 @@ public class LevelGenerator : MonoBehaviour
             }
         }
         activeObjects.Reverse();
-        StartCoroutine(DegenerateLevel());
     }
 
-    public IEnumerator DegenerateLevel()
+    private IEnumerator DepopulateLevel()
     {
         foreach(GameObject ao in activeObjects)
         {
             PoolManager.Instance.Despawn(ao);
+            ao.TryGetComponent(out Interactable io);
+            io?.Reset();
             yield return new WaitForEndOfFrame();
         }
         activeObjects.Clear();
+    }
+
+    private IEnumerator GenerateNextLevel()
+    {
+        DegenerateLevel();
+        yield return new WaitForSeconds(2f);
+        GenerateLevel();
     }
 }
