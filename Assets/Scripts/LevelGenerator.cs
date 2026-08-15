@@ -12,18 +12,13 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private int height;
 
     List<GameObject> activeObjects = new List<GameObject>();
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    private void Awake()
-    {
-        foreach(GameObject tile in tiles)
-        {
-            PoolManager.Instance.Prewarm(tile, 45);
-        }
-    }
 
     void Start()
     {
+        foreach (GameObject tile in tiles)
+        {
+            PoolManager.Instance.Prewarm(tile, 45);
+        }
         StartCoroutine(GenerateLevel());
     }
 
