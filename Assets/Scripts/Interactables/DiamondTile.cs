@@ -7,6 +7,9 @@ public class DiamondTile : MonoBehaviour, Interactable
     [SerializeField] private VisualEffect diamondCollectVFX;
     [SerializeField] private Transform visual;
     [SerializeField] private float collectAnimationSpeed = 1;
+
+    [SerializeField] private OnDiamondInteract onDiamondInteract;
+    [SerializeField] private int score;
     private Collider col;
 
     private void Awake()
@@ -18,6 +21,7 @@ public class DiamondTile : MonoBehaviour, Interactable
     {
         diamondCollectVFX.Play();
         col.enabled = false;
+        onDiamondInteract?.Raise(transform.position, score);
         StartCoroutine(ScaleDownAnimation());
     }
 

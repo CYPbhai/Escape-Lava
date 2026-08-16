@@ -237,7 +237,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DiamondTile
   diamondCollectVFX: {fileID: 4110352471349524577}
   visual: {fileID: 3670199957304880796}
-  collectAnimationSpeed: 4
+  collectAnimationSpeed: 2
+  onDiamondInteract: {fileID: 11400000, guid: 576f61915146ea04da5dc140b55bf1ee, type: 2}
+  score: 50
 --- !u!1 &4609205776544485939
 GameObject:
   m_ObjectHideFlags: 0

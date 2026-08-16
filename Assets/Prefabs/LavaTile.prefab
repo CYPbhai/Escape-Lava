@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LavaTile
   lavaEffect: {fileID: 4652226351786890004}
+  onLavaInteract: {fileID: 11400000, guid: 3cb0ebd3038b26e42a15e0fd1a128c2a, type: 2}
+  score: -25
 --- !u!1 &7697438700864775293
 GameObject:
   m_ObjectHideFlags: 0

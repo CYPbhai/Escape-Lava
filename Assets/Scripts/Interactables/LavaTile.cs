@@ -4,9 +4,12 @@ using UnityEngine.VFX;
 public class LavaTile : MonoBehaviour, Interactable
 {
     [SerializeField] private VisualEffect lavaEffect;
+    [SerializeField] private OnLavaInteract onLavaInteract;
+    [SerializeField] private int score;
     public void Interact()
     {
         lavaEffect.Play();
+        onLavaInteract?.Raise(transform.position, score);
     }
 
     public void Reset() { }
