@@ -58,8 +58,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1176209098778129654}
-  - component: {fileID: 5652323577150634215}
   - component: {fileID: 955050307916818306}
+  - component: {fileID: 3081540278727680118}
   m_Layer: 0
   m_Name: LavaTile
   m_TagString: Untagged
@@ -84,8 +84,23 @@ Transform:
   - {fileID: 4824237059644583039}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5652323577150634215
-SphereCollider:
+--- !u!114 &955050307916818306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5098152431571202962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06a7cd1ce551944c9ea4b295294bc7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LavaTile
+  lavaEffect: {fileID: 4652226351786890004}
+  onLavaInteract: {fileID: 11400000, guid: 3cb0ebd3038b26e42a15e0fd1a128c2a, type: 2}
+  score: -25
+--- !u!65 &3081540278727680118
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,23 +118,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 4.5
+  m_Size: {x: 9, y: 9, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &955050307916818306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5098152431571202962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06a7cd1ce551944c9ea4b295294bc7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LavaTile
-  lavaEffect: {fileID: 4652226351786890004}
-  onLavaInteract: {fileID: 11400000, guid: 3cb0ebd3038b26e42a15e0fd1a128c2a, type: 2}
-  score: -25
 --- !u!1 &7697438700864775293
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -4}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1176209098778129654}
