@@ -73,7 +73,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MinusScoreText
   scoreText: {fileID: 1127800349142634841}
-  onLavaInteract: {fileID: 11400000, guid: 3cb0ebd3038b26e42a15e0fd1a128c2a, type: 2}
 --- !u!1 &4107998414680705995
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,8 +165,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4.8
-  m_fontSizeBase: 4.8
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

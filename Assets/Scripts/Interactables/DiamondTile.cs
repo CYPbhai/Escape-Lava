@@ -22,10 +22,14 @@ public class DiamondTile : MonoBehaviour, Interactable
         diamondCollectVFX.Play();
         col.enabled = false;
         onDiamondInteract?.Raise(transform.position, score);
+        if (!gameObject.activeSelf) return;
         StartCoroutine(ScaleDownAnimation());
     }
-
-    public void Reset() 
+    private void OnEnable()
+    {
+        Reset();
+    }
+    private void Reset() 
     {
         visual.localScale = Vector3.one;
         col.enabled = true;
@@ -33,6 +37,7 @@ public class DiamondTile : MonoBehaviour, Interactable
 
     IEnumerator ScaleDownAnimation()
     {
+        if (!gameObject.activeSelf) yield return null;
         Vector3 startScale = visual.localScale;
         float elapsed = 0f;
         float duration = 1f / collectAnimationSpeed;

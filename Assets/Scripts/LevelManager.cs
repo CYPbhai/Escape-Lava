@@ -62,8 +62,6 @@ public class LevelManager : MonoBehaviour
         foreach(GameObject ao in activeObjects)
         {
             PoolManager.Instance.Despawn(ao);
-            ao.TryGetComponent(out Interactable io);
-            io?.Reset();
             yield return new WaitForEndOfFrame();
         }
         activeObjects.Clear();

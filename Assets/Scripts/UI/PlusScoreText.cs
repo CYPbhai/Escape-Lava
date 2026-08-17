@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlusScoreText : BaseScoreText
 {
     private void OnEnable()

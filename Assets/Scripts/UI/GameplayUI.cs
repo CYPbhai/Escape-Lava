@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameplayUI : MonoBehaviour
 {
-    [SerializeField] private GameObject[] textAnimationPrefabs;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private OnLavaInteract onLavaInteract;
     [SerializeField] private OnDiamondInteract onDiamondInteract;
@@ -15,20 +14,15 @@ public class GameplayUI : MonoBehaviour
     {
         onLavaInteract.OnRaised += OnLavaInteract_OnRaised;
         onDiamondInteract.OnRaised += OnDiamondInteract_OnRaised;
-        foreach(GameObject go in textAnimationPrefabs)
-        {
-            PoolManager.Instance.Prewarm(go, 20);
-        }
     }
-
+    private void OnEnable()
+    {
+        score = 0; 
+        scoreText.text = "Score: " + score.ToString();
+    }
     private void OnDiamondInteract_OnRaised(Vector3 pos, int scr)
     {
         if (!gameObject.activeSelf) return;
-
-        GameObject go = PoolManager.Instance.Spawn(textAnimationPrefabs[0], 
-            new Vector3(pos.x, pos.y, transform.position.z), 
-            Quaternion.identity, transform);
-        StartCoroutine(DespawnHandling(go));
         score += scr;
         StartCoroutine(UpdateUI());
     }
@@ -37,10 +31,6 @@ public class GameplayUI : MonoBehaviour
     {
         if (!gameObject.activeSelf) return;
 
-        GameObject go = PoolManager.Instance.Spawn(textAnimationPrefabs[1],
-            new Vector3(pos.x, pos.y, transform.position.z), 
-            Quaternion.identity, transform);
-        StartCoroutine(DespawnHandling(go));
         score += scr;
         if (score <= 0)
             score = 0;
@@ -76,10 +66,4 @@ public class GameplayUI : MonoBehaviour
         scoreText.transform.localScale = Vector3.one;
     }
 
-    private IEnumerator DespawnHandling(GameObject go)
-    {
-        if (!gameObject.activeSelf) yield return null;
-        yield return new WaitForSeconds(1f);
-        PoolManager.Instance.Despawn(go);
-    }
 }

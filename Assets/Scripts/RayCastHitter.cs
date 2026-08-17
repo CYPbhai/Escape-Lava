@@ -9,10 +9,17 @@ public class RayCastHitter : MonoBehaviour
         input = new InputSystem_Actions();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         input.Player.Enable();
         input.Player.Attack.started += Attack_started;
+    }
+
+    private void OnDisable()
+    {
+
+        input.Player.Disable();
+        input.Player.Attack.started -= Attack_started;
     }
 
     private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)

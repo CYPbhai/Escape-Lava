@@ -8,9 +8,8 @@ public class LavaTile : MonoBehaviour, Interactable
     [SerializeField] private int score;
     public void Interact()
     {
+        if (!gameObject.activeSelf) return;
         lavaEffect.Play();
         onLavaInteract?.Raise(transform.position, score);
     }
-
-    public void Reset() { }
 }
