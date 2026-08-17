@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class ScoreUI : MonoBehaviour
+public class GameplayUI : MonoBehaviour
 {
     [SerializeField] private GameObject[] textAnimationPrefabs;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -23,6 +23,8 @@ public class ScoreUI : MonoBehaviour
 
     private void OnDiamondInteract_OnRaised(Vector3 pos, int scr)
     {
+        if (!gameObject.activeSelf) return;
+
         GameObject go = PoolManager.Instance.Spawn(textAnimationPrefabs[0], 
             new Vector3(pos.x, pos.y, transform.position.z), 
             Quaternion.identity, transform);
@@ -33,6 +35,8 @@ public class ScoreUI : MonoBehaviour
 
     private void OnLavaInteract_OnRaised(Vector3 pos, int scr)
     {
+        if (!gameObject.activeSelf) return;
+
         GameObject go = PoolManager.Instance.Spawn(textAnimationPrefabs[1],
             new Vector3(pos.x, pos.y, transform.position.z), 
             Quaternion.identity, transform);
@@ -45,6 +49,7 @@ public class ScoreUI : MonoBehaviour
 
     public IEnumerator UpdateUI()
     {
+        if (!gameObject.activeSelf) yield return null;
         Vector3 startScale = scoreText.transform.localScale;
         float elapsed = 0f;
         float duration = 0.1f;
@@ -73,6 +78,7 @@ public class ScoreUI : MonoBehaviour
 
     private IEnumerator DespawnHandling(GameObject go)
     {
+        if (!gameObject.activeSelf) yield return null;
         yield return new WaitForSeconds(1f);
         PoolManager.Instance.Despawn(go);
     }

@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int width;
     [SerializeField] private int height;
 
+    int numberOfDiamonds = 0;
+
     List<GameObject> activeObjects = new List<GameObject>();
 
     void Start()
@@ -19,11 +21,11 @@ public class LevelManager : MonoBehaviour
         {
             PoolManager.Instance.Prewarm(tile, 45);
         }
-        GenerateLevel();
     }
 
     public void GenerateLevel()
     {
+        numberOfDiamonds = 0;
         StartCoroutine(PopulateLevel());
     }
 
@@ -48,6 +50,7 @@ public class LevelManager : MonoBehaviour
                 PoolManager.Instance.Spawn(tiles[random], 
                     new Vector3(i * stepSize + startPosition.x, j * stepSize + startPosition.y, 0), 
                     Quaternion.identity, transform));
+                if (random == 2) numberOfDiamonds++;
                 yield return new WaitForEndOfFrame();
             }
         }
@@ -71,5 +74,10 @@ public class LevelManager : MonoBehaviour
         DegenerateLevel();
         yield return new WaitForSeconds(2f);
         GenerateLevel();
+    }
+
+    public int GetNumberOfDiamonds()
+    {
+        return numberOfDiamonds;
     }
 }

@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: +50
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 68d6712090036e848968a74609f0f8ae, type: 2}
-  m_sharedMaterial: {fileID: -3678421081268053952, guid: 68d6712090036e848968a74609f0f8ae, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: db0c3a9d7554e3d48aaa1478af0ade79, type: 2}
+  m_sharedMaterial: {fileID: -3678421081268053952, guid: db0c3a9d7554e3d48aaa1478af0ade79, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -210,4 +210,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlusScoreText
   scoreText: {fileID: 3246127172604236003}
-  onDiamondInteract: {fileID: 11400000, guid: 576f61915146ea04da5dc140b55bf1ee, type: 2}
